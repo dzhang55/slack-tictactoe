@@ -97,8 +97,12 @@ Game.prototype.toString = function() {
     output += 'Welcome to Tic Tac Toe!\n';
     this.sentStartMessage = true;
   }
-  output += '| X | O | O |\n|---+---+---|\n| O | X | X |\n|---+---+---|\n' + 
-    '| X | O | X |\n';
+  output += '| ' + this.cell(0, 0) + ' | ' + this.cell(0, 1) + ' | ' +
+    this.cell(0, 2) + ' |\n|---+---+---|\n';
+  output += '| ' + this.cell(1, 0) + ' | ' + this.cell(1, 1) + ' | ' +
+    this.cell(1, 2) + ' |\n|---+---+---|\n';
+  output += '| ' + this.cell(2, 0) + ' | ' + this.cell(2, 1) + ' | ' +
+    this.cell(2, 2) + ' |\n';
   if (this.over) {
     output += 'Game over! Winner: ' + this.winner;
   } else {
@@ -106,6 +110,20 @@ Game.prototype.toString = function() {
   }
   output += '```';
   return output;
+}
+
+Game.prototype.cell = function(row, col) {
+  switch (this.board[row][col]) {
+    case -1:
+      return 'X';
+    case 0:
+      return '-';
+    case 1:
+      return 'O';
+    default:
+      throw err;
+  }
+
 }
 
 // Update game state to reflect player's forfeit.
