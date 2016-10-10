@@ -95,8 +95,10 @@ var isMove = function(message) {
 }
 
 var parseMove = function(message) {
-  row, col = message.split(' ');
-  return [parseInt(row), parseInt(col)];
+  var move = message.split(' ');
+  var row = parseInt(move[0]);
+  var col = parseInt(move[1]);
+  return [row, col];
 }
 
 var isStatus = function(message) {
@@ -109,7 +111,7 @@ var isForfeit = function(message) {
 
 // Update the game state and send response accordingly.
 var updateGame = function(move, player, game, channel, response) {
-  if (player !== game.turn) {
+  if (!game.isPlayersTurn(player)) {
     response.send('It\'s not your turn!');
     return;
   }

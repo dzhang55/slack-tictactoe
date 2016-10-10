@@ -22,14 +22,14 @@ Game.prototype.didPlayerWin = function(player) {
   var win = false;
   for (var i = 0; i < DIMENSION; i++) {
     // Check horizontal row i.
-    win = win || isInARow([i, 0], [1, 0], player);
+    win = win || this.isInARow([i, 0], [1, 0], player);
 
     // Check vertical column i.
-    win = win || isInARow([0, i], [0, 1], player);
+    win = win || this.isInARow([0, i], [0, 1], player);
   }
   // Check diagonals.
-  win = win || isInARow([0, 0], [1, 1], player);
-  win = win || isInARow([2, 0], [-1, -1], player);
+  win = win || this.isInARow([0, 0], [1, 1], player);
+  win = win || this.isInARow([2, 0], [-1, 1], player);
   return win;
 }
 
@@ -46,7 +46,7 @@ Game.prototype.isInARow = function(start, vector, player) {
 }
 
 // Check if the move can be made.
-Game.prototype.validMove = function(move) {
+Game.prototype.isValidMove = function(move) {
   var row = parseInt(move[0]);
   var col = parseInt(move[1]);
   if (row < 0 || row > DIMENSION - 1 || col < 0 || col > DIMENSION - 1) {
@@ -68,6 +68,8 @@ Game.prototype.isPlayersTurn = function(player) {
 // Make a move and check win conditions.
 Game.prototype.move = function(move, player) {
   this.numMoves++;
+  var row = move[0];
+  var col = move[1];
   if (player === this.playerX) {
     this.board[row][col] = -1;
   }
