@@ -30,6 +30,9 @@ app.post('/tictactoe', function(request, response) {
     } else {
       // Remove '@' symbol.
       var challengedUser = message.slice(1);
+      if (challengedUser === body.user_name) {
+        response.send("You can't play against yourself!");
+      }
       games[channel] = new Game(challengedUser, body.user_name);
       sendChannelResponse(response, games[channel].toString());
     }

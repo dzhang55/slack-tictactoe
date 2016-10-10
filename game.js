@@ -19,7 +19,7 @@ var Game = function(playerX, playerO) {
 
 // Check if a player won the game.
 Game.prototype.didPlayerWin = function(player) {
-  var cellValue = player === playerX ? -1 : 1;
+  var cellValue = player === this.playerX ? -1 : 1;
   var win = false;
   for (var i = 0; i < DIMENSION; i++) {
     // Check horizontal row i.
