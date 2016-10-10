@@ -54,7 +54,7 @@ app.post('/tictactoe', function(request, response) {
     updateGame(move, body.user_name, games[channel], channel, response);
   }
   else if (isStatus(message)) {
-    sendChannelResponse(response, games[channel].toString());
+    response.send(games[channel].toString());
   }
   else if (isForfeit(message)) {
     sendChannelResponse(response, games[channel].forfeit(body.user_name)); 
