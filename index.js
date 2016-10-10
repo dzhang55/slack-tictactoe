@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({
 
 app.post('/tictactoe', function(request, response) {
   var body = request.body;
-  var channel = body.channel;
+  var channel = body.channel_id;
   var message = body.text;
 
   if (!isValid(body)) {

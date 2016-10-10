@@ -23,10 +23,10 @@ Game.prototype.didPlayerWin = function(player) {
   var win = false;
   for (var i = 0; i < DIMENSION; i++) {
     // Check horizontal row i.
-    win = win || this.isInARow([i, 0], [1, 0], cellValue);
+    win = win || this.isInARow([i, 0], [0, 1], cellValue);
 
     // Check vertical column i.
-    win = win || this.isInARow([0, i], [0, 1], cellValue);
+    win = win || this.isInARow([0, i], [1, 0], cellValue);
   }
   // Check diagonals.
   win = win || this.isInARow([0, 0], [1, 1], cellValue);
