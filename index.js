@@ -54,7 +54,8 @@ app.post('/tictactoe', function(request, response) {
     sendChannelResponse(response, games[channel].toString());
   }
   else if (isForfeit(message)) {
-    sendChannelResponse(response, games[channel].forfeit(body.user_name));     
+    sendChannelResponse(response, games[channel].forfeit(body.user_name)); 
+    delete games[channel];    
   } else {
     response.send('Unrecognized command. Please type /ttt help for instructions.');
   }
@@ -121,7 +122,7 @@ var updateGame = function(move, player, game, channel, response) {
   }
 
   game.move(move, player);
-  sendChannelResponse(game.toString());
+  sendChannelResponse(response, game.toString());
   if (game.over) {
     delete games[channel];
   }
