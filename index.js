@@ -73,13 +73,6 @@ var isUser = function(message) {
   return message[0] === '@' && message.split(' ').length === 1;
 }
 
-var getUser = function(username) {
-  var payload = {
-    'token': token
-  };
-  r = requests.get('https://slack.com/api/users.list', params=payload);
-}
-
 var isHelp = function(message) {
   return message === 'help';
 }

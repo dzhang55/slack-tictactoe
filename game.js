@@ -19,26 +19,27 @@ var Game = function(playerX, playerO) {
 
 // Check if a player won the game.
 Game.prototype.didPlayerWin = function(player) {
+  var cellValue = player === playerX ? -1 : 1;
   var win = false;
   for (var i = 0; i < DIMENSION; i++) {
     // Check horizontal row i.
-    win = win || this.isInARow([i, 0], [1, 0], player);
+    win = win || this.isInARow([i, 0], [1, 0], cellValue);
 
     // Check vertical column i.
-    win = win || this.isInARow([0, i], [0, 1], player);
+    win = win || this.isInARow([0, i], [0, 1], cellValue);
   }
   // Check diagonals.
-  win = win || this.isInARow([0, 0], [1, 1], player);
-  win = win || this.isInARow([2, 0], [-1, 1], player);
+  win = win || this.isInARow([0, 0], [1, 1], cellValue);
+  win = win || this.isInARow([2, 0], [-1, 1], cellValue);
   return win;
 }
 
 // Check a given direction for a win.
-Game.prototype.isInARow = function(start, vector, player) {
+Game.prototype.isInARow = function(start, vector, cellValue) {
   for (var i = 0; i < DIMENSION; i++) {
     var row = start[0] + i * vector[0];
     var col = start[1] + i * vector[1];
-    if (this.board[row][col] !== player) {
+    if (this.board[row][col] !== cellValue) {
       return false;
     }
   }
