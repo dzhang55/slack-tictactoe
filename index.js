@@ -37,7 +37,8 @@ app.post('/tictactoe', function(request, response) {
   else if (isHelp(message)) {
     response.send('```Welcome to Tic Tac Toe! Here are the available ' + 
       'commands:\n/ttt [@user] - to start a game\n/ttt [row: 0-2] [col: 0-2] - to' +
-      ' make a move\n/ttt forfeit - to forfeit the game```');
+      ' make a move\n/ttt status - to display the game state\n' + 
+      '/ttt forfeit - to forfeit the game```');
   }
   else if (!(channel in games)) {
     response.send('This channel does not have a game! Use /ttt [@user] to ' + 
