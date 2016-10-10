@@ -108,7 +108,7 @@ Game.prototype.toString = function() {
   if (this.over) {
     output += 'Game over! Winner: ' + this.winner;
   } else {
-    output += this.xTurn ? this.playerX : this.playerO + '\'s turn';
+    output += (this.xTurn ? this.playerX : this.playerO) + '\'s turn';
   }
   output += '```';
   return output;
